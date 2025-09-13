@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<title>فريق المساعدين vs فريق المخربين - مسطيل ضيق</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: transparent;
+    color: #fff;
+    text-align: center;
+  }
+
+  .banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(7,16,40,0.8);
+    border-radius: 12px;
+    padding: 10px 10px;
+    box-shadow: 0 8px 10px rgba(0,0,0,0.5);
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 120px; 
+    gap: 5px;
+  }
+
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 150px;
+  }
+
+  .team h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #ffd166;
+  }
+
+  .score {
+    font-size: 55px;
+    font-weight: 800;
+    margin: 5px 0;
+  }
+
+  .buttons {
+    margin-top: 5px;
+  }
+
+  button {
+    margin: 2px;
+    padding: 6px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+
+  .plus { background: #16a34a; color: #fff; }
+  .plus:hover { background: #22c55e; }
+  .minus { background: #ef4444; color: #fff; }
+  .minus:hover { background: #f87171; }
+
+  .vs {
+    font-size: 70px;
+    font-weight: bold;
+    color: #ff4d6d;
+    text-shadow: 0 0 20px rgba(255,77,109,0.9);
+    margin: 5px;
+    line-height: 1;
+  }
+
+  @media(max-width:800px){
+    .banner {
+      flex-direction: column;
+      gap: 10px;
+      height: auto;
+    }
+    .vs { font-size: 50px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="banner">
+  <div class="team">
+    <h2>فريق المساعدين</h2>
+    <div id="helpersScore" class="score">0</div>
+    <div class="buttons">
+      <button class="plus" onclick="changeScore('helpers', 1)">+1</button>
+      <button class="minus" onclick="changeScore('helpers', -1)">-1</button>
+    </div>
+  </div>
+
+  <div class="vs">VS</div>
+
+  <div class="team">
+    <h2>فريق المخربين</h2>
+    <div id="saboteursScore" class="score">0</div>
+    <div class="buttons">
+      <button class="plus" onclick="changeScore('saboteurs', 1)">+1</button>
+      <button class="minus" onclick="changeScore('saboteurs', -1)">-1</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  let helpers = 0;
+  let saboteurs = 0;
+
+  function changeScore(team, value) {
+    if(team==='helpers'){
+      helpers+=value;
+      if(helpers<0) helpers=0;
+      document.getElementById('helpersScore').innerText=helpers;
+    } else if(team==='saboteurs'){
+      saboteurs+=value;
+      if(saboteurs<0) saboteurs=0;
+      document.getElementById('saboteursScore').innerText=saboteurs;
+    }
+  }
+</script>
+
+</body>
+</html>
